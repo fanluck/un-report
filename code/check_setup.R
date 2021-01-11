@@ -14,3 +14,5 @@ print(getwd())
 print(system('git --version', intern = TRUE))
 print(R.Version()$version.string)
 print(pkg_versions)
+
+print(getwd())
