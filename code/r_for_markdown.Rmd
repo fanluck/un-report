@@ -1,0 +1,38 @@
+---
+title: "UN Report Using Markdown"
+author: "Zhaohui Fan"
+date: "1/12/2021"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r pwd}
+getwd()
+#setwd("C:/Users/fanluck/Desktop/un-report/data")
+```
+
+# R Code chunk
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(tidyverse) ## Contain ggplot package
+```
+
+This report was prepared to the attention of the United Nations. It analyzes the relationship between a country's GDP, its life expectancy and CO2 emissions. Our goal is to determine to what degree a country’s economic strength or weakness may be related to its public health status and impact on climate pollution. We hypothesize that both life expectancy and CO2 emissions increase with a country's GDP.
+
+# Read in data
+```{r data}
+gapminder_1997 <- read_csv("../data/gapminder_data.csv")
+```
+
+# GGPLOT to draw the graphs
+```{r gdp_lifeexp_1997}
+ggplot(data=gapminder_1997)+
+ aes(x = gdpPercap, y = lifeExp, color=continent, size=pop/1000000) +
+ geom_point() +
+ labs(x = "GDP Per Capita", y = "Life Expectancy",
+ title= "Do people in wealthy countries live longer?", size="Population (in millions)")
+```
